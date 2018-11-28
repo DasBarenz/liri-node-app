@@ -1,19 +1,36 @@
 require("dotenv").config();
 var axios = require("axios");
+// var spotify = new Spotify(keys.spotify);
 
+//concert-this
+// spotify-this-song
+// movie-this
+// do-what-it-says
 
-//from NPM for spotify
-var Spotify = require('node-spotify-api');
- 
-var spotify = new Spotify({
-  id: "504d00084d084a3a98b852898183da12",
-  secret: "2e110f5104424de197ff042669d9c049"
-});
- 
-spotify.search({ type: 'track', query: 'All the Small Things' }, function(err, data) {
-  if (err) {
-    return console.log('Error occurred: ' + err);
+//sample axios use
+// var movieName = "Titanic"
+// var queryUrl = "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=trilogy";
+
+// // This line is just to help us debug against the actual URL.
+// console.log(queryUrl);
+
+// axios.get(queryUrl).then(
+//   function(response) {
+//     console.log("Release Year: " + response.data.Year);
+//   }
+// );
+
+//bands in town
+var artist = "Cher";
+var queryUrl = "https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp";
+//Name of the venue
+// Venue location
+// Date of the Event (use moment to format this as "MM/DD/YYYY")
+// This line is just to help us debug against the actual URL.
+console.log(queryUrl);
+
+axios.get(queryUrl).then(
+  function(response) {
+    console.log(response.data);
   }
- 
-console.log(data); 
-});
+);
