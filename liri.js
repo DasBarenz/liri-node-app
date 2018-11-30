@@ -32,10 +32,16 @@ var queryUrl = "https://rest.bandsintown.com/artists/" + "cher" + "/events?app_i
 // // Venue location
 // // Date of the Event (use moment to format this as "MM/DD/YYYY")
 // // This line is just to help us debug against the actual URL.
-console.log(queryUrl);
+// console.log(queryUrl);
 
-axios.get(queryUrl).then(function(response) {
-        console.log(response.data);
+axios.get(queryUrl).then(function(bands) { //the console log of the response works...but the console logs in the for loop do not work with or w/o the loop
+        // console.log(bands.data);
+        // for (var i = 0; i < bands.length; i++) {
+            console.log(`Venue: ${bands.data.venue.name}`); //no response
+            // console.log("Venue: " + bands.data.artistdata.name.venue.name); //no response
+            console.log(`City: ${bands.venue.city}`);
+            console.log("Date: " + moment(bands.datetime).format("MM/DD/YYYY"));
+        // }
     }
 );
 
